@@ -22,6 +22,27 @@ function circulationRepo() {
     });
   }
 
+  function getByParam(query, limit) {
+    return new Promise(async (resolve, reject) => {
+      const client = new MongoClient(uri);
+      try {
+        await client.connect();
+        const db = await client.db(dbName);
+
+        let items = db.collection('newspapers').find(query);
+
+        if (limit > 3) {
+          items = items.limit(limit);
+        }
+
+        resolve(await items.toArray());
+        client.close();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
   function loadData(data) {
     return new Promise(async (resolve, reject) => {
       const client = new MongoClient(uri);
@@ -40,7 +61,7 @@ function circulationRepo() {
       }
     });
   }
-  return { loadData, get };
+  return { loadData, get, getByParam };
 }
 
 module.exports = circulationRepo();

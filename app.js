@@ -18,10 +18,20 @@ async function main() {
 
     const result = await circulationRepo.loadData(data);
     assert.equal(data.length, result.insertedCount);
-    // console.log(result.insertedCount, results.ops);
 
+    //get all data
     const getData = await circulationRepo.get();
     assert.equal(data.length, getData.length);
+
+    // get filtered data
+    const filterData = await circulationRepo.getByParam({
+      Newspaper: getData[4].Newspaper,
+    });
+    assert.deepEqual(filterData[0], getData[4]);
+
+    // get limited data count
+    const limittedData = await circulationRepo.getByParam({}, 3);
+    assert.equal(limittedData.length, 3);
   } catch (e) {
     console.error(e);
   } finally {
