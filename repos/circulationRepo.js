@@ -117,7 +117,45 @@ function circulationRepo() {
     });
   }
 
-  return { loadData, get, getByParam, getById, add };
+  function update(id, newItem) {
+    return new Promise(async (resolve, reject) => {
+      const client = new MongoClient(uri);
+      try {
+        await client.connect();
+        const db = client.db(dbName);
+        const updatedItem = await db
+          .collection('newspapers')
+          .findOneAndReplace({ _id: ObjectId(id) }, newItem, {
+            returnOriginal: false,
+          });
+
+        resolve(updatedItem.value);
+        client.close();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  function remove(id) {
+    return new Promise(async (resolve, reject) => {
+      const client = new MongoClient(uri);
+      try {
+        await client.connect();
+        const db = client.db(dbName);
+        const removed = await db
+          .collection('newspapers')
+          .deleteOne({ _id: ObjectId(id) });
+
+        resolve(removed.deletedCount === 1);
+        client.close();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  return { loadData, get, getByParam, getById, add, update, remove };
 }
 
 module.exports = circulationRepo();
