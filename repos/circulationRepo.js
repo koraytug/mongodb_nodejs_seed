@@ -109,7 +109,7 @@ function circulationRepo() {
         const db = client.db(dbName);
         const addedItem = await db.collection('newspapers').insertOne(item);
 
-        resolve(addedItem.ops[0]);
+        resolve(addedItem);
         client.close();
       } catch (error) {
         reject(error);

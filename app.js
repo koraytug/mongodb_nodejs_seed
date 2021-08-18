@@ -49,8 +49,8 @@ async function main() {
       'Pulitzer Prize Winners and Finalists, 1990-2014': 0,
     };
     const addedItem = await circulationRepo.add(newItem);
-    assert(addedItem._id);
-    const addedItemQuery = await circulationRepo.getById(addedItem._id);
+    assert(addedItem.insertedId);
+    const addedItemQuery = await circulationRepo.getById(addedItem.insertedId);
     assert.deepEqual(addedItemQuery, newItem);
   } catch (e) {
     console.error(e);
