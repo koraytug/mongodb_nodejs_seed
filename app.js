@@ -32,6 +32,26 @@ async function main() {
     // get limited data count
     const limittedData = await circulationRepo.getByParam({}, 3);
     assert.equal(limittedData.length, 3);
+
+    // get by Id
+    const id = getData[4]._id;
+    const byId = await circulationRepo.getById(id);
+    assert.deepEqual(byId, getData[4]);
+
+    // add new item
+    const newItem = {
+      Newspaper: 'My paper',
+      'Daily Circulation, 2004': 1,
+      'Daily Circulation, 2013': 2,
+      'Change in Daily Circulation, 2004-2013': 100,
+      'Pulitzer Prize Winners and Finalists, 1990-2003': 0,
+      'Pulitzer Prize Winners and Finalists, 2004-2014': 0,
+      'Pulitzer Prize Winners and Finalists, 1990-2014': 0,
+    };
+    const addedItem = await circulationRepo.add(newItem);
+    assert(addedItem._id);
+    const addedItemQuery = await circulationRepo.getById(addedItem._id);
+    assert.deepEqual(addedItemQuery, newItem);
   } catch (e) {
     console.error(e);
   } finally {
