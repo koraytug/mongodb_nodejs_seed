@@ -1,0 +1,56 @@
+[
+  {
+      "Newspaper": "USA Today",
+      "Daily Circulation, 2004": 2192,
+      "Daily Circulation, 2013": 1674,
+      "Change in Daily Circulation, 2004-2013": -24,
+      "Pulitzer Prize Winners and Finalists, 1990-2003": 1,
+      "Pulitzer Prize Winners and Finalists, 2004-2014": 1,
+      "Pulitzer Prize Winners and Finalists, 1990-2014": 2
+  },
+  {
+      "Newspaper": "Wall Street Journal",
+      "Daily Circulation, 2004": 2101,
+      "Daily Circulation, 2013": 2378,
+      "Change in Daily Circulation, 2004-2013": 13,
+      "Pulitzer Prize Winners and Finalists, 1990-2003": 30,
+      "Pulitzer Prize Winners and Finalists, 2004-2014": 20,
+      "Pulitzer Prize Winners and Finalists, 1990-2014": 50
+  },
+  {
+      "Newspaper": "New York Times",
+      "Daily Circulation, 2004": 1119,
+      "Daily Circulation, 2013": 1865,
+      "Change in Daily Circulation, 2004-2013": 67,
+      "Pulitzer Prize Winners and Finalists, 1990-2003": 55,
+      "Pulitzer Prize Winners and Finalists, 2004-2014": 62,
+      "Pulitzer Prize Winners and Finalists, 1990-2014": 117
+  },
+  {
+      "Newspaper": "Los Angeles Times",
+      "Daily Circulation, 2004": 983727,
+      "Daily Circulation, 2013": 653868,
+      "Change in Daily Circulation, 2004-2013": -34,
+      "Pulitzer Prize Winners and Finalists, 1990-2003": 44,
+      "Pulitzer Prize Winners and Finalists, 2004-2014": 41,
+      "Pulitzer Prize Winners and Finalists, 1990-2014": 85
+  },
+  {
+      "Newspaper": "Washington Post",
+      "Daily Circulation, 2004": 760034,
+      "Daily Circulation, 2013": 474767,
+      "Change in Daily Circulation, 2004-2013": -38,
+      "Pulitzer Prize Winners and Finalists, 1990-2003": 52,
+      "Pulitzer Prize Winners and Finalists, 2004-2014": 48,
+      "Pulitzer Prize Winners and Finalists, 1990-2014": 100
+  },
+  {
+      "Newspaper": "New York Daily News",
+      "Daily Circulation, 2004": 712671,
+      "Daily Circulation, 2013": 516165,
+      "Change in Daily Circulation, 2004-2013": -28,
+      "Pulitzer Prize Winners and Finalists, 1990-2003": 4,
+      "Pulitzer Prize Winners and Finalists, 2004-2014": 2,
+      "Pulitzer Prize Winners and Finalists, 1990-2014": 6
+  }
+]

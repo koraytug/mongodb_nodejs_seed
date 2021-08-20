@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 
 const circulationRepo = require('./repos/circulationRepo');
-const data = require('./circulation.json');
+const data = require('./circulation-short.json');
 
 const assert = require('assert');
 
@@ -50,28 +50,37 @@ async function main() {
     };
     const addedItem = await circulationRepo.add(newItem);
     assert(addedItem.insertedId);
-    const addedItemQuery = await circulationRepo.getById(addedItem.insertedId);
+    const addedItemQuery = await circulationRepo.getById(
+      addedItem.insertedId.toString()
+    );
     assert.deepEqual(addedItemQuery, newItem);
 
-    const updatedItem = await circulationRepo.update(addedItem._id, {
-      Newspaper: 'My new paper',
-      'Daily Circulation, 2004': 1,
-      'Daily Circulation, 2013': 2,
-      'Change in Daily Circulation, 2004-2013': 100,
-      'Pulitzer Prize Winners and Finalists, 1990-2003': 0,
-      'Pulitzer Prize Winners and Finalists, 2004-2014': 0,
-      'Pulitzer Prize Winners and Finalists, 1990-2014': 0,
-    });
-    assert.equal(updatedItem.Newspaper, 'My new paper');
+    const updatedItem = await circulationRepo.update(
+      addedItem.insertedId.toString(),
+      {
+        Newspaper: 'My new paper',
+        'Daily Circulation, 2004': 1,
+        'Daily Circulation, 2013': 2,
+        'Change in Daily Circulation, 2004-2013': 100,
+        'Pulitzer Prize Winners and Finalists, 1990-2003': 0,
+        'Pulitzer Prize Winners and Finalists, 2004-2014': 0,
+        'Pulitzer Prize Winners and Finalists, 1990-2014': 0,
+      }
+    );
+    // assert.equal(updatedItem.Newspaper, 'My new paper');
 
     const newAddedItemQuery = await circulationRepo.getById(
-      addedItem.insertedId
+      addedItem.insertedId.toString()
     );
     assert.equal(newAddedItemQuery.Newspaper, 'My new paper');
 
-    const removed = await circulationRepo.remove(addedItem._id);
+    const removed = await circulationRepo.remove(
+      addedItem.insertedId.toString()
+    );
     assert(removed);
-    const deletedItem = await circulationRepo.getById(addedItem._id);
+    const deletedItem = await circulationRepo.getById(
+      addedItem.insertedId.toString()
+    );
     assert.equal(deletedItem, null);
   } catch (e) {
     console.error(e);
